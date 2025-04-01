@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/shivamkumar/todobackend/config"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -14,6 +16,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	config.ConnectDB()
 	fmt.Println("Server running on http://localhost:8000") 
 
 	http.HandleFunc("/", homeHandler)
