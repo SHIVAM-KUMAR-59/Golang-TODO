@@ -1,15 +1,25 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"net/http"
+)
 
-func main(){
-	r := gin.Default()
-	data := "35e635e25e263e525e38"
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": data,
-			"code": 200,
-		})
-	})
-	r.Run(":8000")
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	_, err := fmt.Fprintln(w, "Hello, World!")
+	if err != nil {
+		http.Error(w, "Failed to write response", http.StatusInternalServerError)
+		return
+	}
+}
+
+func main() {
+	fmt.Println("Server running on http://localhost:8000") 
+
+	http.HandleFunc("/", homeHandler)
+
+	err := http.ListenAndServe(":8000", nil)
+	if err != nil {
+		panic(err) 
+	}
 }
