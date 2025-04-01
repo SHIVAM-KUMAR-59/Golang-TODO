@@ -1,0 +1,50 @@
+# Binaries and build artifacts
+/bin/
+/obj/
+/tmp/
+/*.exe
+/*.dll
+/*.so
+/*.dylib
+/*.out
+/*.a
+/*.o
+
+# Go modules and dependencies
+/vendor/
+/go.sum
+/go.work
+/go.work.sum
+
+# Dependency directories (for modules)
+pkg/
+bin/
+*.test
+
+# Logs and runtime files
+*.log
+*.lock
+*.pid
+*.seed
+*.cover
+*.prof
+*.trace
+
+# Environment and configuration files
+.env
+.env.local
+config.yaml
+config.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# GoLand-specific files
+*.pb.go
+*.gen.go
