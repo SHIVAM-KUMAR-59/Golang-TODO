@@ -1,24 +1,15 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-)
+import "github.com/gin-gonic/gin"
 
-// Handler function
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, Go Server!")
-}
-
-func main() {
-	// Register the route
-	http.HandleFunc("/", handler)
-
-	// Start the server
-	port := ":8080"
-	fmt.Println("🚀 Server running on http://localhost" + port)
-	err := http.ListenAndServe(port, nil)
-	if err != nil {
-		fmt.Println("❌ Error starting server:", err)
-	}
+func main(){
+	r := gin.Default()
+	data := "35e635e25e263e525e38"
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": data,
+			"code": 200,
+		})
+	})
+	r.Run(":8000")
 }
