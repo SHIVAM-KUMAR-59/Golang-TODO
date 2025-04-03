@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/shivamkumar/todobackend/config"
+	"github.com/shivamkumar/todobackend/controllers/auth"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +21,7 @@ func main() {
 	fmt.Println("Server running on http://localhost:8000") 
 
 	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/auth", auth.RegisterUser)
 
 	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
