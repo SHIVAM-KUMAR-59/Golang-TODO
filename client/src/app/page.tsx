@@ -330,7 +330,7 @@ export default function Home() {
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl"
+            className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl cursor-pointer"
           >
             Start Your Journey
           </button>
@@ -347,7 +347,7 @@ export default function Home() {
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-slate-400 hover:text-slate-200 transition-colors"
+                className="text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -413,7 +413,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl hover:shadow-blue-500/25"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl hover:shadow-blue-500/25 cursor-pointer"
               >
                 Create Account
               </button>
