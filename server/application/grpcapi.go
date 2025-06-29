@@ -3,16 +3,16 @@ package application
 import (
 	"context"
 
+	"shivam.com/server/application/models/pb"
 	"shivam.com/server/application/service/types"
 	"shivam.com/server/application/service/types/entity"
-	"shivam.com/server/gen/go/application/models"
 )
 
 type grpcApi struct {
 	userService   types.UserService
 }
 
-func (g *grpcApi) CreateUser(ctx context.Context, in *models.CreateUserRequest) (*models.CreateUserResponse, error) {
+func (g *grpcApi) CreateUser(ctx context.Context, in *pb.CreateUserRequest) (*pb.CreateUserResponse, error) {
 	name := in.Name
 	email := in.Email
 	password := in.Password
@@ -27,7 +27,7 @@ func (g *grpcApi) CreateUser(ctx context.Context, in *models.CreateUserRequest) 
 		return nil, err
 	}
 
-	return &models.CreateUserResponse{Id: userId}, nil
+	return &pb.CreateUserResponse{Id: userId}, nil
 }
 
 func NewGrpcApi(userService types.UserService) *grpcApi {

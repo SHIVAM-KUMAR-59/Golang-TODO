@@ -63,3 +63,7 @@ gen
 ehthumbs.db
 Icon?
 Desktop.ini
+
+# Generated files
+*.connect.Go
+*.pb.go

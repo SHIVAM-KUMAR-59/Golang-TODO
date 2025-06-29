@@ -1,0 +1,12 @@
+# buf.gen.yaml
+version: v2
+
+plugins:
+  - remote: buf.build/bufbuild/es
+    out: gen/es
+
+inputs:
+  # - git_repo: https://github.com/exiro-ai/monorepo-main.git
+  #   branch: main
+  #   subdir: grpc-langraph-server
+  - directory: ../server

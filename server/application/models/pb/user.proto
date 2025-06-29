@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package shivam.com.server.application.models;
 
-option go_package = "shivam.com/server/gen/go/server/application/models";
+option go_package = "shivam.com/server/application/models/pb";
 
 import "google/protobuf/empty.proto";
 

@@ -1,5 +1,9 @@
-version: v1
-name: buf.build/shivam/server
-
+version: v2
+lint:
+  use:
+    - STANDARD
+breaking:
+  use:
+    - FILE
 deps:
-  - buf.build/google/protobuf
+  - buf.build/googleapis/googleapis
