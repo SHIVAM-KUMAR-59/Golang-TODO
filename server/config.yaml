@@ -1,0 +1,4 @@
+production_mode: false
+
+http_port: 9090
+database_url: 'postgres://postgres:password@localhost:5432/exiro_database?sslmode=disable'
