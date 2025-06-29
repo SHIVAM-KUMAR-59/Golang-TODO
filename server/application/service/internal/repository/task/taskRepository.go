@@ -17,9 +17,9 @@ type Repository struct {
 }
 
 func (r *Repository) CreateTask(ctx context.Context, task entity.Task) (string, error) {
-	
+	taskId := uuid.New()
 	createTaskParams := gen.CreateTaskParams {
-		ID: task.ID,
+		ID: taskId,
 		Title: task.Name,
 		Description: task.Description,
 		UserID: task.UserId,

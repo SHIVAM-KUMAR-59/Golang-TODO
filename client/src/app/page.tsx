@@ -14,6 +14,7 @@ import {
   Wrench,
 } from 'lucide-react'
 import { useCreateUser } from '@/server/user'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -23,16 +24,17 @@ export default function Home() {
     password: '',
   })
   const { mutateAsync: createUser } = useCreateUser()
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate user creation
-    console.log('Creating user:', formData)
+
     try {
       const response = await createUser(formData)
-      console.log('response', response)
+      console.log('response', response.id)
       setFormData({ name: '', email: '', password: '' })
       setIsModalOpen(false)
+      router.push(`/${response.id}`)
     } catch (err) {
       console.log('error', err)
     }

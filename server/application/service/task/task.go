@@ -21,7 +21,6 @@ func (s *Service) CreateTask(ctx context.Context, task entity.Task) (string, err
 	name := task.Name
 	description := task.Description
 	userId := task.UserId
-
 	if name == "" || description == "" || userId.String() == "" {
 		s.logger.Error().Msg("name, description and userId are required")
 		return "", xerrors.BadRequestError(ctx, errors.New("name, description and userId are required"))

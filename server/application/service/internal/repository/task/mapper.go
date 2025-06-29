@@ -11,5 +11,6 @@ func (r *Repository) mapToTaskEntity(task gen.Task) entity.Task {
 		Name:        task.Title,
 		Description: task.Description,
 		UserId:      task.UserID,
+		IsCompleted: task.IsCompleted,
 	}
 }

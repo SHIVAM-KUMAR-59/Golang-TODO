@@ -25,6 +25,8 @@ func (g *grpcApi) RegisterRoutes(mux chi.Router) {
 	path, handler := pbconnect.NewUserManagementHandler(g)
 	mux.Handle(path+"*", handler)
 
+	path, handler = pbconnect.NewTaskManagementHandler(g)
+	mux.Handle(path+"*", handler)
 }
 
 func (g *grpcApi) CreateUser(ctx context.Context, in *connect.Request[pb.CreateUserRequest]) (*connect.Response[pb.CreateUserResponse], error) {
@@ -116,7 +118,7 @@ func (g *grpcApi) DeleteTask(ctx context.Context, in *connect.Request[pb.DeleteT
 }
 
 func (g *grpcApi) ListTasks(ctx context.Context, in *connect.Request[pb.ListTasksRequest]) (*connect.Response[pb.ListTasksResponse], error) {
-
+	
 	userId := in.Msg.UserId
 	tasks, err := g.taskService.ListTasks(ctx, userId)
 	if err != nil {
@@ -134,6 +136,24 @@ func (g *grpcApi) ListTasks(ctx context.Context, in *connect.Request[pb.ListTask
 	}
 
 	return connect.NewResponse(&pb.ListTasksResponse{Tasks: pbTasks}), nil
+}
+
+func (g *grpcApi) GetTask(ctx context.Context, in *connect.Request[pb.GetTaskRequest]) (*connect.Response[pb.GetTaskResponse], error) {
+
+	taskID := in.Msg.Id
+	task, err := g.taskService.GetTask(ctx, taskID)
+	if err != nil {
+		return nil, err
+	}
+
+	return connect.NewResponse(&pb.GetTaskResponse{
+		Tasks: &pb.Task{
+			Id:          task.ID.String(),
+			Name:        task.Name,
+			Description: task.Description,
+			IsCompleted: task.IsCompleted,
+		},
+	}), nil
 }
 
 func newGrpcApi(ctx context.Context, userService types.UserService, taskService types.TaskService) grpcApi {

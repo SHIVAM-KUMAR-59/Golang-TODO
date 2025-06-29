@@ -17,9 +17,9 @@ type Repository struct {
 }
 
 func (r *Repository) CreateUser(ctx context.Context, user entity.User) (string, error) {
-
+	userId := uuid.New()
 	createUserParams := gen.CreateUserParams{
-		ID:        user.ID,
+		ID:        userId,
 		Name:      user.Name,
 		Email:     user.Email,
 		Password:  user.Password,
@@ -27,6 +27,7 @@ func (r *Repository) CreateUser(ctx context.Context, user entity.User) (string, 
 	genUser, err := r.db.CreateUser(ctx, createUserParams)
 	if err != nil {
 		r.logger.Error().Msg(fmt.Sprintf("error creating user: %v", err))
+		fmt.Println(err)
 		return "", err
 	}
 
