@@ -24,7 +24,14 @@ func (s *Service) CreateUser(ctx context.Context, user entity.User) (string, err
 		return "", errors.New("password is required")
 	}
 
-	userId, err := s.userRepository.CreateUser(ctx, user)
+	newUser := entity.User{
+		ID:       uuid.New(),
+		Name:     user.Name,
+		Email:    email,
+		Password: password,
+	}
+
+	userId, err := s.userRepository.CreateUser(ctx, newUser)
 	if err != nil {
 		return "", err
 	}

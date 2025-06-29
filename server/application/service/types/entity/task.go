@@ -1,7 +1,7 @@
 package entity
 
 type Task struct {
-	Id   		string
+	ID  		string
 	Name 		string
 	Description string
 	UserId 		string

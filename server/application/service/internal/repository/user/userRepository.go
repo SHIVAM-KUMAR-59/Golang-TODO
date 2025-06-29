@@ -16,6 +16,7 @@ type Repository struct {
 func (r *Repository) CreateUser(ctx context.Context, user entity.User) (string, error) {
 
 	createUserParams := gen.CreateUserParams{
+		ID:        user.ID,
 		Name:      user.Name,
 		Email:     user.Email,
 		Password:  user.Password,
