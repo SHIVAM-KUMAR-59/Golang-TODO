@@ -4,5 +4,5 @@ migrate:
 sqlc:
 	sqlc generate
 
-run: migrate sqlc
-	go run cmd/main.go
+run:
+	go run main.go

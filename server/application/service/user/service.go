@@ -52,7 +52,7 @@ func (s *Service) DeleteUser(ctx context.Context, userId string) (error) {
 	return s.userRepository.DeleteUser(ctx, id)
 }
 
-func NewService(userRepository types.UserRepository) *Service {
+func NewService(ctx context.Context, userRepository types.UserRepository) *Service {
 	return &Service{
 		userRepository: userRepository,
 	}
