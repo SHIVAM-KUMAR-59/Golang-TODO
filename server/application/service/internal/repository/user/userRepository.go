@@ -30,13 +30,9 @@ func (r *Repository) CreateUser(ctx context.Context, user entity.User) (string, 
 	return genUser.ID.String(), nil
 }
 
-func (r *Repository) DeleteUser(ctx context.Context, userId string) (error) {
-	
-	id, uuidErr := uuid.Parse(userId)
-	if uuidErr != nil {
-		return uuidErr
-	}
-	err := r.db.DeleteUser(ctx, id)
+func (r *Repository) DeleteUser(ctx context.Context, userId uuid.UUID) (error) {
+
+	err := r.db.DeleteUser(ctx, userId)
 	if err != nil {
 		return err
 	}
