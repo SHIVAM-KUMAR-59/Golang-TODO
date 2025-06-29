@@ -24,10 +24,11 @@ type Server struct {
 func NewServer(
 	ctx context.Context,
 	userService types.UserService,
+	taskService types.TaskService,
 ) *Server {
 	return &Server{
 		logger:        zerolog.Ctx(ctx),
-		grpcApi:       newGrpcApi(ctx, userService),
+		grpcApi:       newGrpcApi(ctx, userService, taskService),
 	}
 }
 

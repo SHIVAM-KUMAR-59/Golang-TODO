@@ -20,6 +20,7 @@ func main() {
 
 	server := api.NewServer(ctx,
 		service.NewUserService(ctx),
+		service.NewTaskService(ctx),
 		)
 	if err := server.Start(ctx); err != nil {
 		log.Fatal(err)
