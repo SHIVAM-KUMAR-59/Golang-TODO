@@ -26,8 +26,7 @@ func (r *Repository) CreateUser(ctx context.Context, user entity.User) (string, 
 	}
 	genUser, err := r.db.CreateUser(ctx, createUserParams)
 	if err != nil {
-		// TODO: Replace with zerologger
-		fmt.Println("Error creating user")
+		r.logger.Error().Msg(fmt.Sprintf("error creating user: %v", err))
 		return "", err
 	}
 

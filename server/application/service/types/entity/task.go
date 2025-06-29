@@ -1,9 +1,11 @@
 package entity
 
+import "github.com/google/uuid"
+
 type Task struct {
-	ID  		string
+	ID  		uuid.UUID 
 	Name 		string
 	Description string
-	UserId 		string
+	UserId 		uuid.UUID 
 	IsCompleted bool
 }
