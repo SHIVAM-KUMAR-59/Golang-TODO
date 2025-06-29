@@ -1,0 +1,5 @@
+version: v1
+name: buf.build/shivam/server
+
+deps:
+  - buf.build/google/protobuf

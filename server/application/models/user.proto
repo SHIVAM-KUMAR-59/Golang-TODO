@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package shivam.com.server.application.models;
+
+option go_package = "shivam.com/server/gen/go/server/application/models";
+
+import "google/protobuf/empty.proto";
+
+service UserManagement {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+    rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty);
+}
+
+message CreateUserRequest {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message CreateUserResponse {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message DeleteUserRequest {
+    string id = 1;
+}
