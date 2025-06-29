@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package shivam.com.server.application.models;
+
+option go_package = "shivam.com/server/application/models/pb";
+
+import "google/protobuf/empty.proto";
+
+service TaskManagement {
+    rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse);
+    rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse);
+    rpc DeleteTask(DeleteTaskRequest) returns (google.protobuf.Empty);
+    rpc GetTask(GetTaskRequest) returns (GetTaskResponse);
+    rpc ListTasks(ListTasksRequest) returns (ListTasksResponse);
+}
+
+message CreateTaskRequest {
+    string name = 1;
+    string description = 2;
+    string userId = 3;
+}
+
+message CreateTaskResponse {
+    string id = 1;
+}
+
+message UpdateTaskRequest {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    bool   isCompleted = 4;
+}
+
+message UpdateTaskResponse {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    bool   isCompleted = 4;
+}
+
+message DeleteTaskRequest {
+    string id = 1;
+}
+
+message GetTaskRequest {
+    string id = 1;
+}
+
+message GetTaskResponse {
+    Task tasks = 1;
+}
+
+message Task {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    bool   isCompleted = 4;
+}
+
+message ListTasksRequest {
+    string userId = 1;
+}
+
+message ListTasksResponse {
+    repeated Task tasks = 1;
+}

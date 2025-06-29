@@ -47,15 +47,15 @@ func (s *Service) GetTask(ctx context.Context, taskId string) (entity.Task, erro
 	return s.taskRepository.GetTask(ctx, id)
 }
 
-func (s *Service) UpdateTask(ctx context.Context, task entity.Task) (string, error) {
+func (s *Service) UpdateTask(ctx context.Context, task entity.Task) (entity.Task, error) {
 	
-	updatedTaskId, err := s.taskRepository.UpdateTask(ctx, task)
+	updatedTask, err := s.taskRepository.UpdateTask(ctx, task)
 	if err != nil {
 		s.logger.Error().Msg("error updating task")
-		return "", err
+		return entity.Task{}, err
 	}
 
-	return updatedTaskId, nil
+	return updatedTask, nil
 }
 
 func (s *Service) DeleteTask(ctx context.Context, taskId string) (error) {

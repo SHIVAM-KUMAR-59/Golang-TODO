@@ -14,7 +14,7 @@ type UserService interface {
 type TaskService interface {
 	CreateTask(ctx context.Context, task entity.Task) (string, error)
 	GetTask(ctx context.Context, taskId string) (entity.Task, error)
-	UpdateTask(ctx context.Context, task entity.Task) (string, error)
+	UpdateTask(ctx context.Context, task entity.Task) (entity.Task, error)
 	DeleteTask(ctx context.Context, taskId string) (error)
 	ListTasks(ctx context.Context, userId string) ([]entity.Task, error)
 }

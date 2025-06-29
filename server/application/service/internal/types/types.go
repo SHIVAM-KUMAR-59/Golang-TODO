@@ -15,7 +15,7 @@ type UserRepository interface {
 type TaskRepository interface {
 	CreateTask(ctx context.Context, task entity.Task) (string, error)
 	GetTask(ctx context.Context, taskId uuid.UUID) (entity.Task, error)
-	UpdateTask(ctx context.Context, task entity.Task) (string, error)
+	UpdateTask(ctx context.Context, task entity.Task) (entity.Task, error)
 	DeleteTask(ctx context.Context, taskId uuid.UUID) (error)
 	ListTasks(ctx context.Context, userId uuid.UUID) ([]entity.Task, error)
 }

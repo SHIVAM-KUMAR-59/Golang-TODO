@@ -45,7 +45,7 @@ func (r *Repository) GetTask(ctx context.Context, taskId uuid.UUID) (entity.Task
 	return r.mapToTaskEntity(task), nil
 }
 
-func (r *Repository) UpdateTask(ctx context.Context, task entity.Task) (string, error) {
+func (r *Repository) UpdateTask(ctx context.Context, task entity.Task) (entity.Task, error) {
 	
 	updateTaskParams := gen.UpdateTaskParams {
 		ID: task.ID,
@@ -57,10 +57,10 @@ func (r *Repository) UpdateTask(ctx context.Context, task entity.Task) (string, 
 	updatedTask, err := r.db.UpdateTask(ctx, updateTaskParams)
 	if err != nil {
 		r.logger.Error().Msg("Error updating task")
-		return "", err
+		return entity.Task{}, err
 	}
 
-	return updatedTask.ID.String(), nil
+	return r.mapToTaskEntity(updatedTask), nil
 }
 
 func (r *Repository) DeleteTask(ctx context.Context, taskId uuid.UUID) (error) {
