@@ -1,8 +1,8 @@
 migrate:
-    goose -dir infra/migrations postgres "$$DATABASE_URL"
+	goose -dir infra/database/postgres/migrations postgres "$$DATABASE_URL" up
 
 sqlc:
-    sqlc generate
+	sqlc generate
 
 run: migrate sqlc
-    go run cmd/main.go
+	go run cmd/main.go

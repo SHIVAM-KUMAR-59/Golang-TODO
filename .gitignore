@@ -1,0 +1,65 @@
+# --- Go ---
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build output
+/bin/
+/build/
+/dist/
+/coverage/
+
+# Go workspace files
+*.mod
+*.sum
+
+# Go test cache
+*.cache
+
+# --- Node / Next.js ---
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# .env files
+.env
+.env.*
+.envrc
+
+# logs
+*.log
+
+# IDE / Editor junk
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+Thumbs.db
+
+# Mac junk
+__MACOSX
+
+# --- DB / migrations ---
+# dump files
+*.sqlite
+gen
+
+
+# --- OS-specific ---
+ehthumbs.db
+Icon?
+Desktop.ini
