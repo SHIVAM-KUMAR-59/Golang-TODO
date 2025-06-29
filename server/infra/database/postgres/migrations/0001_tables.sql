@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
--- +goose StatementEnd
 
+-- +goose StatementEnd
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS task (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -17,4 +17,5 @@ CREATE TABLE IF NOT EXISTS task (
     is_completed BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
 -- +goose StatementEnd

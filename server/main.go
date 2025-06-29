@@ -10,10 +10,12 @@ import (
 	"shivam.com/server/application/logger"
 	"shivam.com/server/application/service"
 	"shivam.com/server/infra/database/postgres"
+	"shivam.com/server/infra/database/postgres/migrations"
 )
 
 func main() {
 
+	migrations.Migrate()
 	ctx := context.Background()
 	ctx = postgres.WithContext(ctx)
 	ctx = logger.NewLogger().WithContext(ctx)

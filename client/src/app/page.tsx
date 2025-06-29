@@ -13,22 +13,29 @@ import {
   Layers,
   Wrench,
 } from 'lucide-react'
+import { useCreateUser } from '@/server/user'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    username: '',
+    password: '',
   })
+  const { mutateAsync: createUser } = useCreateUser()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     // Simulate user creation
     console.log('Creating user:', formData)
-    alert(`Welcome ${formData.name}! Your account has been created.`)
-    setFormData({ name: '', email: '', username: '' })
-    setIsModalOpen(false)
+    try {
+      const response = await createUser(formData)
+      console.log('response', response)
+      setFormData({ name: '', email: '', password: '' })
+      setIsModalOpen(false)
+    } catch (err) {
+      console.log('error', err)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -394,20 +401,20 @@ export default function Home() {
 
               <div>
                 <label
-                  htmlFor="username"
+                  htmlFor="password"
                   className="block text-sm font-medium text-slate-300 mb-2"
                 >
-                  Username
+                  Password
                 </label>
                 <input
                   type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
+                  id="password"
+                  name="password"
+                  value={formData.password}
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 bg-slate-700 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-slate-400"
-                  placeholder="Choose a username"
+                  placeholder="Choose a password"
                 />
               </div>
 
