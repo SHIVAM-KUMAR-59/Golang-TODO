@@ -5,7 +5,7 @@ import { BUTTON_HOVER_CLASSES } from '@/constants/task.constants'
 interface TaskHeaderProps {
   onCreateTask: () => void
 }
-// Header
+
 export const TaskHeader = ({ onCreateTask }: TaskHeaderProps) => (
   <div className="flex items-center justify-between mb-8">
     <div className="flex items-center gap-4">
